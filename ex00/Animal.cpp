@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:58:41 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/19 15:26:33 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/19 18:10:24 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Animal& Animal::operator=(const Animal& src) {
     if (this != &src)
         this->type = src.type;
     std::cout << "Animal: Copy assignment operator called" << std::endl;
-    return (*this);
+    return *this;
 }
 
 Animal::~Animal() {
