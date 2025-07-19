@@ -3,13 +3,13 @@ NAME =		a.out
 OBJ_DIR =	obj/
 
 INC = \
-			Animal.hpp \
+			AAnimal.hpp \
 			Brain.hpp \
 			Cat.hpp \
 			Dog.hpp
 
 SRC = \
-			Animal.cpp \
+			AAnimal.cpp \
 			Brain.cpp \
 			Cat.cpp \
 			Dog.cpp \

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,37 +12,37 @@
 
 #include <string>
 #include <iostream>
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-Animal::Animal() : type("unidentified") {
-    std::cout << "Animal: Default constructor called" << std::endl;
+AAnimal::AAnimal() : type("unidentified") {
+    std::cout << "AAnimal: Default constructor called" << std::endl;
 }
 
-Animal::Animal(const std::string& type) : type(type) {
-    std::cout << "Animal: String constructor called" << std::endl;
+AAnimal::AAnimal(const std::string& type) : type(type) {
+    std::cout << "AAnimal: String constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal& src) : type(src.type){
-    std::cout << "Animal: Copy constructor called" << std::endl;
+AAnimal::AAnimal(const AAnimal& src) : type(src.type){
+    std::cout << "AAnimal: Copy constructor called" << std::endl;
 }
 
-Animal& Animal::operator=(const Animal& src) {
+AAnimal& AAnimal::operator=(const AAnimal& src) {
     if (this != &src)
         this->type = src.type;
-    std::cout << "Animal: Copy assignment operator called" << std::endl;
+    std::cout << "AAnimal: Copy assignment operator called" << std::endl;
     return *this;
 }
 
-Animal::~Animal() {
-    std::cout << "Animal: Destructor called" << std::endl;
+AAnimal::~AAnimal() {
+    std::cout << "AAnimal: Destructor called" << std::endl;
 }
 
-const std::string& Animal::getType() const {
+const std::string& AAnimal::getType() const {
     return type;
 }
 
-void Animal::makeSound() const {
-    std::cout
-        << "Animal: ...silence... "
-        << "(What am I? Who am I? How do I sound?)" << std::endl;
-}
+// void AAnimal::makeSound() const {
+//     std::cout
+//         << "AAnimal: ...silence... "
+//         << "(What am I? Who am I? How do I sound?)" << std::endl;
+// }

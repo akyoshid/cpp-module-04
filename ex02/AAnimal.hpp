@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EX02_ANIMAL_HPP_
-# define EX02_ANIMAL_HPP_
+#ifndef EX02_AAnimal_HPP_
+# define EX02_AAnimal_HPP_
 
 # include <string>
 
-class Animal {
+class AAnimal {
  public:
-    Animal();
-    Animal(const std::string& type);
-    Animal(const Animal& src);
-    Animal& operator=(const Animal& src);
-    virtual ~Animal();
+    AAnimal();
+    AAnimal(const std::string& type);
+    AAnimal(const AAnimal& src);
+    AAnimal& operator=(const AAnimal& src);
+    virtual ~AAnimal();
     const std::string& getType() const;
-    virtual void makeSound() const;
+    // virtual void makeSound() const;
+    virtual void makeSound() const = 0;
  protected:
     std::string type;
 };
