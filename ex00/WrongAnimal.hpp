@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:58:55 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/19 15:45:16 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:24:39 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class WrongAnimal {
  public:
     WrongAnimal();
-    WrongAnimal(const std::string& type);
+    explicit WrongAnimal(const std::string& type);
     WrongAnimal(const WrongAnimal& src);
     WrongAnimal& operator=(const WrongAnimal& src);
     virtual ~WrongAnimal();

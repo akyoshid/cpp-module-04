@@ -18,7 +18,7 @@
 class AAnimal {
  public:
     AAnimal();
-    AAnimal(const std::string& type);
+    explicit AAnimal(const std::string& type);
     AAnimal(const AAnimal& src);
     AAnimal& operator=(const AAnimal& src);
     virtual ~AAnimal();
