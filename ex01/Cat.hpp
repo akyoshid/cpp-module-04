@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 14:01:25 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/19 15:53:48 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/19 17:07:47 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define EX01_CAT_HPP_
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Cat : public Animal {
  public:
@@ -22,6 +23,8 @@ class Cat : public Animal {
     Cat& operator=(const Cat& src);
     ~Cat();
     void makeSound() const;
+ private:
+    Brain* brain;
 };
 
 #endif
