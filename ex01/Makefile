@@ -4,18 +4,16 @@ OBJ_DIR =	obj/
 
 INC = \
 			Animal.hpp \
+			Brain.hpp \
 			Cat.hpp \
-			Dog.hpp \
-			WrongAnimal.hpp \
-			WrongCat.hpp
+			Dog.hpp
 
 SRC = \
 			Animal.cpp \
+			Brain.cpp \
 			Cat.cpp \
 			Dog.cpp \
-			main.cpp \
-			WrongAnimal.cpp \
-			WrongCat.cpp
+			main.cpp
 
 OBJ =		$(patsubst %.cpp,$(OBJ_DIR)%.o,$(SRC))
 
