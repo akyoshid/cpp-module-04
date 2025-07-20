@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 22:30:55 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/20 23:22:09 by akyoshid         ###   ########.fr       */
+/*   Created: 2025/07/19 23:50:11 by akyoshid          #+#    #+#             */
+/*   Updated: 2025/07/20 23:24:12 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
+#include <iostream>
+#include "Ice.hpp"
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-AMateria::AMateria(const std::string& type) : type(type) {
+Ice::Ice() : AMateria("ice") {
 }
 
-AMateria::~AMateria() {
+Ice::~Ice() {
 }
 
-const std::string& AMateria::getType() const {
-    return type;
+Ice* Ice::clone() const {
+    return new Ice();
 }
 
-void AMateria::use(ICharacter& target) {
-    static_cast<void>(target);
+void Ice::use(ICharacter& target) {
+    std::cout
+        <<  "* shoots an ice bolt at "
+        << target.getName() << " *"
+        << std::endl;
 }

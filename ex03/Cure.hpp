@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 22:30:55 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/20 23:22:09 by akyoshid         ###   ########.fr       */
+/*   Created: 2025/07/19 23:58:13 by akyoshid          #+#    #+#             */
+/*   Updated: 2025/07/20 23:23:25 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
+#ifndef EX03_CURE_HPP_
+# define EX03_CURE_HPP_
 
-AMateria::AMateria(const std::string& type) : type(type) {
-}
+# include <string>
+# include "AMateria.hpp"
 
-AMateria::~AMateria() {
-}
+class Cure : public AMateria {
+ public:
+    Cure();
+    ~Cure();
+    Cure* clone() const;
+    void use(ICharacter& target);
+ private:
+    Cure(const Cure& src);  // = delete;
+    Cure& operator=(const Cure& src);  // = delete;
+};
 
-const std::string& AMateria::getType() const {
-    return type;
-}
-
-void AMateria::use(ICharacter& target) {
-    static_cast<void>(target);
-}
+#endif

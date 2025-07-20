@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 22:30:55 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/20 23:22:09 by akyoshid         ###   ########.fr       */
+/*   Created: 2025/07/19 23:17:45 by akyoshid          #+#    #+#             */
+/*   Updated: 2025/07/20 23:23:30 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
+#ifndef EX03_ICE_HPP_
+# define EX03_ICE_HPP_
 
-AMateria::AMateria(const std::string& type) : type(type) {
-}
+# include <string>
+# include "AMateria.hpp"
 
-AMateria::~AMateria() {
-}
+class Ice : public AMateria {
+ public:
+    Ice();
+    ~Ice();
+    Ice* clone() const;
+    void use(ICharacter& target);
+ private:
+    Ice(const Ice& src);  // = delete;
+    Ice& operator=(const Ice& src);  // = delete;
+};
 
-const std::string& AMateria::getType() const {
-    return type;
-}
-
-void AMateria::use(ICharacter& target) {
-    static_cast<void>(target);
-}
+#endif

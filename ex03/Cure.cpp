@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/19 22:30:55 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/20 23:22:09 by akyoshid         ###   ########.fr       */
+/*   Created: 2025/07/19 23:59:33 by akyoshid          #+#    #+#             */
+/*   Updated: 2025/07/20 23:20:45 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
+#include <iostream>
+#include "Cure.hpp"
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-AMateria::AMateria(const std::string& type) : type(type) {
+Cure::Cure() : AMateria("cure") {
 }
 
-AMateria::~AMateria() {
+Cure::~Cure() {
 }
 
-const std::string& AMateria::getType() const {
-    return type;
+Cure* Cure::clone() const {
+    return new Cure();
 }
 
-void AMateria::use(ICharacter& target) {
-    static_cast<void>(target);
+void Cure::use(ICharacter& target) {
+    std::cout
+        <<  "* heals "
+        << target.getName() << "’s wounds *"
+        << std::endl;
 }
