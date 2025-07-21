@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 07:14:29 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/21 01:39:51 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/21 01:52:18 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ const std::string& Character::getName() const {
 //  and after equip(), check if an Owner has been set using getOwner().
 void Character::equip(AMateria* m) {
     int idx = 0;
-    while (idx < 4 && slot[idx] != NULL)
+    while (idx < slot_size && slot[idx] != NULL)
         idx++;
-    if (idx != 4) {
+    if (idx != slot_size) {
         std::cout
             << name
             << " equipped " << m->getType() << " in slot " << idx
@@ -91,6 +91,10 @@ void Character::equip(AMateria* m) {
 //  and after unequip(),
 //  check that the Owner has been set to NULL using getOwner().
 void Character::unequip(int idx) {
+    if (idx < 0 || idx >= slot_size) {
+        std::cerr << "unequip: invalid slot index: " << idx << std::endl;
+        return;
+    }
     if (slot[idx] != NULL) {
         std::cout
             << name
@@ -108,6 +112,10 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter& target) {
+    if (idx < 0 || idx >= slot_size) {
+        std::cerr << "use: invalid slot index: " << idx << std::endl;
+        return;
+    }
     if (slot[idx] != NULL) {
         std::cout
             << name
@@ -124,6 +132,10 @@ void Character::use(int idx, ICharacter& target) {
 }
 
 const AMateria* Character::getMateria(int idx) const {
+    if (idx < 0 || idx >= slot_size) {
+        std::cerr << "getMateria: invalid slot index: " << idx << std::endl;
+        return NULL;
+    }
     return slot[idx];
 }
 
@@ -139,6 +151,10 @@ void Character::copySlot(const Character& src) {
 }
 
 void Character::destroyMateria(int idx) {
+    if (idx < 0 || idx >= slot_size) {
+        std::cerr << "destroyMateria: invalid slot index: " << idx << std::endl;
+        return;
+    }
     if (slot[idx] != NULL) {
         std::cout
             << name
