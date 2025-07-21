@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 21:38:42 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/20 23:29:31 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/21 01:01:27 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ class AMateria {
     const std::string& getType() const;
     virtual AMateria* clone() const = 0;
     virtual void use(ICharacter& target);
+    void setOwner(ICharacter* owner);
+    const ICharacter* getOwner() const;
  protected:
     std::string type;
+    ICharacter *owner;
  private:
     AMateria();  // = delete;
     AMateria(const AMateria& src);  // = delete;
