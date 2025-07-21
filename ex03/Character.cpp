@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 07:14:29 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/21 01:52:18 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/21 02:31:02 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ const std::string& Character::getName() const {
 //  and after equip(), check if an Owner has been set using getOwner().
 void Character::equip(AMateria* m) {
     int idx = 0;
+    if (m == NULL)
+        return;
     while (idx < slot_size && slot[idx] != NULL)
         idx++;
     if (idx != slot_size) {

@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 09:42:42 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/21 02:27:27 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/21 02:31:17 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ MateriaSource::~MateriaSource() {
 void MateriaSource::learnMateria(AMateria* m) {
     int i = 0;
     if (m == NULL)
-        return ;
+        return;
     while (i < storage_size && storage[i] != NULL) {
         if (storage[i] == m) {
             std::cerr
