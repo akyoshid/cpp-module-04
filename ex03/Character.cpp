@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 07:14:29 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/21 02:31:02 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/21 09:15:20 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,30 @@ void Character::use(int idx, ICharacter& target) {
     }
 }
 
-const AMateria* Character::getMateria(int idx) const {
+void Character::w_equip(AMateria* m) {
+    equip(m);
+    if (m->getOwner() == NULL) {
+        std::cerr
+            << m->getType() << " fell on the floor and was destroyed"
+            << std::endl;
+        delete m;
+    }
+}
+
+void Character::w_unequip(int idx) {
+    AMateria* m = getMateria(idx);
+    if (m != NULL) {
+        unequip(idx);
+        if (m->getOwner() == NULL) {
+            std::cerr
+                << m->getType() << " fell on the floor and was destroyed"
+                << std::endl;
+            delete m;
+        }
+    }
+}
+
+AMateria* Character::getMateria(int idx) {
     if (idx < 0 || idx >= slot_size) {
         std::cerr << "getMateria: invalid slot index: " << idx << std::endl;
         return NULL;

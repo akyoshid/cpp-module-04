@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 00:15:05 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/21 01:21:02 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/21 09:14:34 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ class Character : public ICharacter {
     void equip(AMateria* m);
     void unequip(int idx);
     void use(int idx, ICharacter& target);
-    const AMateria* getMateria(int idx) const;
+    void w_equip(AMateria* m);
+    void w_unequip(int idx);
+    AMateria* getMateria(int idx);
     static const int slot_size = 4;
  private:
     void destroyMateria(int idx);
