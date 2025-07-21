@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 07:14:29 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/21 01:10:48 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/21 01:39:51 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,10 @@ const std::string& Character::getName() const {
     return name;
 }
 
-// equipできずに、mを床に落とす可能性がある。
-// equip前に、mのメモリを呼び出し元で保持しておき、
-// equip後に、getOwner()でOwnerがセットされているか確認する。
+// There is a possibility
+//  that 'm' could be dropped on the floor if it cannot be equipped.
+// Before calling equip(), the caller should keep a reference to 'm' in memory,
+//  and after equip(), check if an Owner has been set using getOwner().
 void Character::equip(AMateria* m) {
     int idx = 0;
     while (idx < 4 && slot[idx] != NULL)
@@ -84,9 +85,11 @@ void Character::equip(AMateria* m) {
     }
 }
 
-// unequipすると、slot[idx]を床に落とす。
-// unequip前に、getMateria()を使用し、Materiaのメモリを呼び出し元で保持しておき、
-// unequip後に、getOwner()でOwnerがNULLになっているか確認する。
+// unequip() drops the materia in slot[idx] onto the floor.
+// Before calling unequip(),
+//  the caller should use getMateria() and retain the Materia in memory,
+//  and after unequip(),
+//  check that the Owner has been set to NULL using getOwner().
 void Character::unequip(int idx) {
     if (slot[idx] != NULL) {
         std::cout
@@ -126,10 +129,8 @@ const AMateria* Character::getMateria(int idx) const {
 
 void Character::copySlot(const Character& src) {
     for (int idx = 0; idx < slot_size; ++idx) {
-        if (slot[idx] != NULL) {
+        if (slot[idx] != NULL)
             destroyMateria(idx);
-            slot[idx] = NULL;
-        }
     }
     for (int idx = 0; idx < slot_size; ++idx) {
         if (src.slot[idx] != NULL)
@@ -145,6 +146,7 @@ void Character::destroyMateria(int idx) {
             << " from slot " << idx
             << std::endl;
         delete slot[idx];
+        slot[idx] = NULL;
     } else {
         std::cerr
             << name
