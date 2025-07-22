@@ -6,7 +6,7 @@
 /*   By: akyoshid <akyoshid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 07:14:29 by akyoshid          #+#    #+#             */
-/*   Updated: 2025/07/21 09:15:20 by akyoshid         ###   ########.fr       */
+/*   Updated: 2025/07/22 06:46:35 by akyoshid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,14 @@ void Character::equip(AMateria* m) {
     int idx = 0;
     if (m == NULL)
         return;
+    if (m->getOwner() != NULL) {
+        std::cerr
+            << name
+            << " cannot equip this materia (already equipped by "
+            << m->getOwner()->getName() << ")"
+            << std::endl;
+        return;
+    }
     while (idx < slot_size && slot[idx] != NULL)
         idx++;
     if (idx != slot_size) {
@@ -134,6 +142,8 @@ void Character::use(int idx, ICharacter& target) {
 }
 
 void Character::w_equip(AMateria* m) {
+    if (m == NULL)
+        return;
     equip(m);
     if (m->getOwner() == NULL) {
         std::cerr
@@ -159,6 +169,12 @@ void Character::w_unequip(int idx) {
 AMateria* Character::getMateria(int idx) {
     if (idx < 0 || idx >= slot_size) {
         std::cerr << "getMateria: invalid slot index: " << idx << std::endl;
+        return NULL;
+    } else if (slot[idx] == NULL) {
+        std::cerr
+            << name
+            << " has no materia equipped in slot " << idx
+            << std::endl;
         return NULL;
     }
     return slot[idx];
